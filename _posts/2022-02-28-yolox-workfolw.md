@@ -19,7 +19,9 @@ tags:
 
 YOLOX 是旷视开源的高性能检测器。旷视的研究者将解耦头、数据增强、anchor-free以及标签分类等目标检测领域的优秀进展与 YOLO 进行了巧妙的集成组合，提出了 YOLOX，不仅实现了超越 YOLOv3、YOLOv4 和 YOLOv5 的 AP，而且取得了极具竞争力的推理速度。如下图：
 
-![null](https://filescdn.proginn.com/9a888b6128bc3c7c5b1d10f77e5816db/a4198f4d5384f3bb94cca934aca0fdc5.webp)其中YOLOX-L版本以 68.9 FPS 的速度在 COCO 上实现了 50.0% AP，比 YOLOv5-L 高出 1.8% AP！还提供了支持 ONNX、TensorRT、NCNN 和 Openvino 的部署版本，本文将详细介绍如何使用 YOLOX进行物体检测。
+![](/imgs_f_md/yolox/1.png)
+
+其中YOLOX-L版本以 68.9 FPS 的速度在 COCO 上实现了 50.0% AP，比 YOLOv5-L 高出 1.8% AP！还提供了支持 ONNX、TensorRT、NCNN 和 Openvino 的部署版本，本文将详细介绍如何使用 YOLOX进行物体检测。
 
 ## 一、 配置环境
 
@@ -278,10 +280,6 @@ python tools/train.py -f exps/example/yolox_voc/yolox_voc_s.py -d 1 -b 4 --fp16 
 python tools/demo.py image -f exps/example/yolox_voc/yolox_voc_s.py -c YOLOX_outputs/yolox_voc_s/latest_ckpt.pth --path ./assets/aircraft_107.jpg --conf 0.3 --nms 0.65 --tsize 640 --save_result --device gpu
 ```
 
-运行结果：
-
-![null](https://filescdn.proginn.com/5f957ba518fabb947245886e4bfc6f7f/23c416aa1c8b19b5ccf52b8660151dd9.webp)
-
 
 
 ## 六. onnx inference
@@ -294,7 +292,7 @@ python tools/demo.py image -f exps/example/yolox_voc/yolox_voc_s.py -c YOLOX_out
 1.  执行命令转换模型到.onnx:
 
    ```bash
-   python tools/export_onnx.py --output-name YOLOX_outputs/firesmoke_s/yolox_s.onnx -f      							   exps/example/yolox_voc/yolox_voc_s.py -c YOLOX_outputs/yolox_voc_s/best_ckpt.pth
+   python tools/export_onnx.py --output-name YOLOX_outputs/firesmoke_s/yolox_s.onnx -f  exps/example/yolox_voc/yolox_voc_s.py -c YOLOX_outputs/yolox_voc_s/best_ckpt.pth
    ```
 
 
